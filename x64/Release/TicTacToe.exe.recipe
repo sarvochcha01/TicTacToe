@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>B:\Coding\cpp\TicTacToe\TicTacToe\x64\Release\TicTacToe.exe</FullPath>
+      <FullPath>B:\Coding\cpp\TicTacToe\x64\Release\TicTacToe.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -39,6 +39,7 @@ std::string getPlayerName()
 
 int checkWinner(board& b)
 {
+
     for (int i = 0; i < 3; i++)
     {
         if (b[i] == 'X' && b[i+3] == 'X' && b[i+6] == 'X')
@@ -46,7 +47,8 @@ int checkWinner(board& b)
             isGameOver = true;
             return 1;
         }
-        else if (b[i] == 'X' && b[i + 1] == 'X' && b[i + 2] == 'X')
+        //i%3 == 0 checks whether its the first element of row or not.
+        else if (b[i] == 'X' && b[i + 1] == 'X' && b[i + 2] == 'X' && i%3==0)
         {
             isGameOver = true;
             return 1;
@@ -66,7 +68,7 @@ int checkWinner(board& b)
             isGameOver = true;
             return 0;
         }
-        else if (b[i] == 'O' && b[i + 1] == 'O' && b[i + 2] == 'O')
+        else if (b[i] == 'O' && b[i + 1] == 'O' && b[i + 2] == 'O' && i % 3 == 0) 
         {
             isGameOver = true;
             return 0;
@@ -88,6 +90,8 @@ int main()
 {
     board b{ '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
+    int turnCounter{};
+
     std::cout << "Enter player one name: ";
     std::string player1{ getPlayerName() };
     system("CLS");
@@ -107,6 +111,7 @@ int main()
             int i = getUserInput(b);
             b[i - 1] = 'X';
             isPlayerOneTurn = !isPlayerOneTurn;
+            turnCounter++;
             checkWinner(b);
         }
         else
@@ -115,9 +120,17 @@ int main()
             int i = getUserInput(b);
             b[i - 1] = 'O';
             isPlayerOneTurn = true; 
+            turnCounter++;
             checkWinner(b);
         }        
+        
         system("CLS");
+        if (turnCounter > 9)
+        {
+            std::cout << "Game Tie";
+            isGameOver = true;
+        }
+
     }
 
     DrawBoard(b);

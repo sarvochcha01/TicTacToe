@@ -39,7 +39,6 @@ std::string getPlayerName()
 
 int checkWinner(board& b)
 {
-
     for (int i = 0; i < 3; i++)
     {
         if (b[i] == 'X' && b[i+3] == 'X' && b[i+6] == 'X')
